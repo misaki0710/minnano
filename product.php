@@ -3,39 +3,41 @@
 
 
 <!-- コンテンツ開始 -->
-<div class="pankuzu">
-  <ul>
-    <li><a href="index.php">HOME</a></li>
-    <li><a href="p_baby_care.php"> &gt; ベビーケア</a></li>
-  </ul>
-</div>
-<table class="product">
 
+
+
+<table>
+	<tr>
+		<th>商品番号</th>
+		<th>商品名</th>
+		<th>価格</th>
+	</tr>
 <?php
-  $pdo = new PDO('mysql:host=mysql1203b.xserver.jp;dbname=cbcgict_20126;charset=utf8','cbcgict_052020','CbcGict2020');
-  $sql=$pdo->Prepare('select * from product where s_cat_id=?');
-  $sql->execute($_REQUEST['s_cat_id']);
+$pdo = new PDO('mysql:host=localhost;dbname=shop;charset=utf8','staff','password');
+if(isset($_REQUEST['keyword'])){
+	$sql = $pdo -> prepare('select * from product where name like ?');
+	$sql -> execute(['%'.$_REQUEST['keyword'].'%']);
+}else{
+	$sql = $pdo -> prepare('select * from product');
+	$sql -> execute([]);
 
-  $count = 0;
-  echo '<tr>';
+/*
+	$sql = $pdo -> query('select * from product');
+*/
+}
+
 foreach($sql as $row){
-    if($count < 4){?>
-      <td>
-         <a href="detail.php?id=<?php echo $row['id'] ?>">
-         <img src="image/thum/<?php echo $row['id'] ?>.jpg" alt="<?php echo $row['name'] ?>" width="170px" height="170px">
-         <br><?php echo $row['name'] ?></a><br>￥<?php echo $row['price'] ?>(税込)
-      </td> <?php echo "\n";
-      $count++;
-    }else{
-      echo '</tr>';
-      echo '<tr>';
-      $count = 0;
-    }
-  }
-      ?>
-  </tr>
-  </table>
-
+	$id = $row['id'];
+?>
+	<tr>
+		<td><?php echo $id ?></td>
+		<td><a href="detail.php?id=<?php echo $id ?>"><?php echo $row['name'] ?></a></td>
+		<td><?php echo $row['price'] ?></td>
+	</tr>
+<?php
+}
+?>
+</table>
 
 
 

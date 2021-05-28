@@ -1,7 +1,7 @@
 <?php session_start();?>
 <!doctype html>
 
-<html lang="ja">
+<html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width;">
@@ -24,7 +24,7 @@
         <nav class="mb_hidden">
           <ul>
               <li class="search_form">
-                <form action="search.php" method="post">
+                <form action="product.php" method="post">
                 	<input class="search_term" type="search" name="keyword">
         			    <button class="search_button" type="submit">検索</button>
         		    </form>
@@ -82,9 +82,7 @@
         <nav id="nav" class="show">
             <div class="logo"><img src="image/mb_batsu.jpg" alt="閉じる" width="100px" height="100px"></div>
             <ul>
-                <li>
-                  <a href="en/index.php">English</a>
-                </li>
+
                 <li><a href="index.php">Home</a></li>
                 <li><a href="account.php">アカウント</a></li>
                 <li><a href="favorite_show.php">お気に入り</a></li>
@@ -203,7 +201,6 @@
 </div>
 <!-- レスポンシブ用終了 -->
         <div class="mb_hidden">
-          <p><a href="en/index.php">English</a></p>
           <p class="cat"><h2>カテゴリ一覧</h2></p>
           <p>
             <table width="200" border="1">
@@ -214,13 +211,13 @@
                      <div class="submenu">
         			         <h3>生鮮・チルド ＞</h3>
                        <ul class="hidden">
-                         <li><a href="p_vegetables.php">- 野菜</a></li>
-                         <li><a href="p_fruits.php">- 果物</a></li>
-                         <li><a href="p_meat.php">- お肉</a></li>
-                         <li><a href="p_fish.php">- お魚</a></li>
-                         <li><a href="p_dairy_product.php">- 卵・乳製品・他</a></li>
-                         <li><a href="p_deli.php">- お惣菜</a></li>
-                         <li><a href="p_chilled.php">- カテゴリー全体</a></li>
+                         <li><a href="p_product.php?id=1">- 野菜</a></li>
+                         <li><a href="p_product.php?id=2">- 果物</a></li>
+                         <li><a href="p_product.php?id=3">- お肉</a></li>
+                         <li><a href="p_product.php?id=4">- お魚</a></li>
+                         <li><a href="p_product.php?id=5.php">- 卵・乳製品・他</a></li>
+                         <li><a href="p_product.php?id=6.php">- お惣菜</a></li>
+                         <li><a href="p_product.php?id=1-7.php">- カテゴリー全体</a></li>
                        </ul>
                      </div>
                    </th>
